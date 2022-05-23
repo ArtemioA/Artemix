@@ -36,7 +36,7 @@ def D(elemento,color = "red"):#Por default se imprime en rojo, para indicar que 
   #Código para actualizar valores: if isinstance(element[1], sy.Expr):element = [element[0],element[1].subs(c_componente[0],c_componente[1])]
 
 
-def E(expr,color):
+def E(expr,color = "red"):
   DataRealSymbolList = []#Guarda en formato symbolo todos los Datos
   for element in DatosList:
     if (element[1] != None) :
@@ -54,9 +54,14 @@ def E(expr,color):
       DataRealSymbolList.append([element[0],word])
   #display(DataRealSymbolList)
   D(expr)
-  D([expr[0],expr[1].subs(DataRealSymbolList)])
-  D([expr[0],expr[1].subs(DatosList)])
 
+  if isinstance(expr,sy.core.relational.Equality):
+    D(expr.subs(DatosList))
+    D((expr.subs(DatosList)).subs(DataRealSymbolList))
+  
+  if isinstance(expr,list):
+    D([expr[0],expr[1].subs(DatosList)])
+    D([expr[0],expr[1].subs(DataRealSymbolList)])
 
 
 def G(c_componente):#Guardar
@@ -71,7 +76,10 @@ def G(c_componente):#Guardar
     DatosList.append(c_componente)#Si el emento no estaba adentro, simplemente lo agregamos.
   
   #Renderizado Gris
-  D(c_componente,"gray")#Hacemos un print renderizado en color gris para indicar que el elemento ha sido definido/guardado
+  if c_componente[1] == None:
+    D(c_componente,"gray")#Hacemos un print renderizado en color gris para indicar que el elemento ha sido definido/guardado
+  else:
+    D(c_componente,"red")#Hacemos un print renderizado en color gris para indicar que el elemento ha sido definido/guardado
 
 
 #Arreglar

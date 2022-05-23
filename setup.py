@@ -20,7 +20,7 @@ def get_version(rel_path: str) -> str:
     raise RuntimeError("Unable to find version string.")
 
 
-version = "1.0.3"#get_version("Artemix/__about__.py")
+version = "1.0.6"#get_version("Artemix/__about__.py")
 
 with io.open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
@@ -36,8 +36,8 @@ setup(
     long_description_content_type="text/markdown",
     author="Artemio Araya",
     author_email="artemioaday@gmail.com",
-    url="",#https://github.com/lululxvi/deepxde
-    download_url="",#"https://github.com/lululxvi/deepxde/tarball/v" + version,
+    url="",
+    download_url="",
     license="MIT",
     install_requires=install_requires,
     classifiers=[
