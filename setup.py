@@ -20,7 +20,7 @@ def get_version(rel_path: str) -> str:
     raise RuntimeError("Unable to find version string.")
 
 
-version = get_version("Artemix/__about__.py")
+version = "1.0.3"#get_version("Artemix/__about__.py")
 
 with io.open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
@@ -29,7 +29,7 @@ with open("requirements.txt", "r") as f:
     install_requires = [x.strip() for x in f.readlines()]
 
 setup(
-    name="Artemix3",
+    name="Artemix",
     version=version,
     description="A library for Industrial Engineering",
     long_description=long_description,
