@@ -2,7 +2,9 @@ import sympy as sy
 import IPython
 
 DatosList = []
-Orden = 0
+Orden = 8
+
+#Funciones para economizar tiempo
 
 #Funciones de Redondeo
 def Redondear(expr):#Redondeamos la expresión.
@@ -51,18 +53,17 @@ def E(expr,color = "red"):
         DataRealSymbolList.append([element[0],sy.symbols("("+word+")")])
     else:
       #Es decir, si es un simbolo sin valor (None) o coleccion de simbolos. Entonces:
-      DataRealSymbolList.append([element[0],word])
+      DataRealSymbolList.append([element[0],element[0]])
   #display(DataRealSymbolList)
-  D(expr)
+  
 
   if isinstance(expr,sy.core.relational.Equality):
-    D(expr.subs(DatosList))
-    D((expr.subs(DatosList)).subs(DataRealSymbolList))
+    D(expr.subs(DataRealSymbolList))
+    D(sy.N(expr.subs(DatosList)))
   
   if isinstance(expr,list):
-    D([expr[0],expr[1].subs(DatosList)])
     D([expr[0],expr[1].subs(DataRealSymbolList)])
-
+    D([expr[0],sy.N(expr[1].subs(DatosList))])
 
 def G(c_componente):#Guardar
   dentro = False
@@ -76,13 +77,11 @@ def G(c_componente):#Guardar
     DatosList.append(c_componente)#Si el emento no estaba adentro, simplemente lo agregamos.
   
   #Renderizado Gris
-  if c_componente[1] == None:
+  if c_componente[1] == None or dentro == False:
     D(c_componente,"gray")#Hacemos un print renderizado en color gris para indicar que el elemento ha sido definido/guardado
   else:
     D(c_componente,"red")#Hacemos un print renderizado en color gris para indicar que el elemento ha sido definido/guardado
 
-
-#Arreglar
 def A(c_componente):#Actualizar
   color = "red"
   for element in DatosList:
