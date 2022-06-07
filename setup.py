@@ -19,7 +19,7 @@ def get_version(rel_path: str) -> str:
             return line.split(delim)[1]
     raise RuntimeError("Unable to find version string.")
 
-version = "1.2.5"#get_version("Artemix/__about__.py")
+version = "1.3.7"#get_version("Artemix/__about__.py")
 
 with io.open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()

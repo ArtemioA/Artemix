@@ -1,0 +1,12 @@
+CHANGELOG.txt
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+Artemix/__init__.py
+Artemix.egg-info/PKG-INFO
+Artemix.egg-info/SOURCES.txt
+Artemix.egg-info/dependency_links.txt
+Artemix.egg-info/requires.txt
+Artemix.egg-info/top_level.txt
